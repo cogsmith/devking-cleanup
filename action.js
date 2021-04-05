@@ -61,9 +61,25 @@ App.Main = async function () {
     LOG.DEBUG('App.Main');
     await App.DeletePastRuns();
     //await App.DeletePastRuns(GITHUB_WORKFLOW);
+
+    await App.NukeTags();
 }
 
 //
+
+App.NukeTags = async function () {
+    let releasesdata = octokit.rest.repos.listReleases(REPO);
+    for (let i = 0; i < releasesdata.data.length) {
+        let x = releasesdata.data[i];
+        await octokit.rest.repos.deleteRelease({ owner: REPO.owner, repo: REPO.repo, release_id: x.id });
+    }
+
+    let tagsdata = octokit.rest.repos.listTags(REPO);
+    for (let i = 0; i < tagsdata.data.length) {
+        let x = tagsdata.data[i];
+        console.log(x);
+    }
+}
 
 App.DeletePastRuns = async function (workflow) {
     let runs = await octokit.rest.actions.listWorkflowRunsForRepo({ owner: REPO.owner, repo: REPO.repo, per_page: 100 });
@@ -72,6 +88,22 @@ App.DeletePastRuns = async function (workflow) {
         if ((GITHUB_RUN_ID == run.id) || (workflow && run.name != workflow)) { continue; }
         LOG.INFO('DeleteRun: ' + run.id);
         try { await octokit.rest.actions.deleteWorkflowRun({ owner: REPO.owner, repo: REPO.repo, run_id: run.id }); } catch (ex) { LOG.ERROR(ex); }
+    }
+}
+
+//
+
+App.RunCMDS = function (cmds) {
+    for (let i = 0; i < cmds.length; i++) {
+        let cmd = cmds[i];
+        let run = false; try { run = execa.commandSync(cmd, { shell: true }); } catch (ex) { LOG.ERROR(ex); }
+        if (!run) { continue; }
+        let msg = 'App.CMD: ' + cmd;
+        if (run.stdout.trim().length > 0) {
+            if (run.stdout.includes("\n")) { msg += "\n" + chalk.gray(run.stdout); }
+            else { msg += chalk.gray(' => ') + chalk.white(run.stdout); }
+        }
+        LOG.DEBUG(msg);
     }
 }
 
