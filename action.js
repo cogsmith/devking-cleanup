@@ -68,13 +68,13 @@ App.Main = async function () {
 //
 
 App.NukeTags = async function () {
-    let releasesdata = octokit.rest.repos.listReleases(REPO); console.log(releasesdata);
+    let releasesdata = await octokit.rest.repos.listReleases(REPO); console.log(releasesdata);
     for (let i = 0; i < releasesdata.data.length; i++) {
         let x = releasesdata.data[i];
         await octokit.rest.repos.deleteRelease({ owner: REPO.owner, repo: REPO.repo, release_id: x.id });
     }
 
-    let tagsdata = octokit.rest.repos.listTags(REPO); console.log(tagsdata);
+    let tagsdata = await octokit.rest.repos.listTags(REPO); console.log(tagsdata);
     for (let i = 0; i < tagsdata.data.length; i++) {
         let x = tagsdata.data[i];
         console.log(x);
