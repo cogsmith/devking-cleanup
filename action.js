@@ -58,8 +58,7 @@ App.Init = async function () {
 }
 
 App.Main = async function () {
-    LOG.DEBUG('App.Main');
-
+    LOG.DEBUG('App.Main: ' + ACTIONDO);
     if (ACTIONDO == 'CLEANUP') { await App.DeletePastRuns(); }
     if (ACTIONDO == 'CLEANME') { await App.DeletePastRuns(GITHUB_WORKFLOW); }
     if (ACTIONDO == 'NUKETAGS') { await App.NukeTags(); }
