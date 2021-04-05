@@ -70,6 +70,7 @@ App.NukeTags = async function () {
     let releasesdata = await octokit.rest.repos.listReleases(REPO); //console.log(releasesdata);
     for (let i = 0; i < releasesdata.data.length; i++) {
         let x = releasesdata.data[i];
+        LOG.DEBUG('DeleteRelease: ' + x.id + ' = ' + x.name);
         await octokit.rest.repos.deleteRelease({ owner: REPO.owner, repo: REPO.repo, release_id: x.id });
     }
 
@@ -77,10 +78,9 @@ App.NukeTags = async function () {
     let tagsdata = await octokit.rest.repos.listTags(REPO); //console.log(tagsdata);
     for (let i = 0; i < tagsdata.data.length; i++) {
         let x = tagsdata.data[i];
-        //console.log(x);'
+        LOG.DEBUG('DeleteTag: ' + x.id + ' = ' + x.name);
         let cmd = 'git push --delete origin ' + x.name + '';
         cmds.push(cmd);
-        LOG.TRACE('NukeTag: ' + cmd);
     }
     App.RunCMDS(cmds);
 }
