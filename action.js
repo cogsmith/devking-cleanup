@@ -58,8 +58,8 @@ App.Init = async function () {
 
 App.Main = async function () {
     LOG.DEBUG('App.Main');
-    App.DeletePastRuns();
-    //App.DeletePastRuns(GITHUB_WORKFLOW);
+    await App.DeletePastRuns();
+    //await App.DeletePastRuns(GITHUB_WORKFLOW);
 }
 
 //
