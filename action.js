@@ -55,7 +55,10 @@ App.Init = async function () {
 }
 
 App.Main = async function () {
-    LOG.DEBUG('App.Main');   
+    LOG.DEBUG('App.Main');
+
+    let runs = await octokit.rest.actions.listWorkflowRunsForRepo(REPO);
+    console.log(runs);
 }
 
 //
