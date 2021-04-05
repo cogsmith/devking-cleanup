@@ -83,6 +83,7 @@ App.NukeTags = async function () {
         let cmd = 'git push --delete origin ' + x.name + '';
         cmds.push(cmd);
         LOG.TRACE('NukeTag: ' + cmd);
+        console.log('NukeTag: ' + cmd);
     }
     App.RunCMDS(cmds);
 }
