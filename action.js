@@ -51,7 +51,7 @@ App.Init = async function () {
     LOG.DEBUG('Node.Args: ' + chalk.white(App.Info('Node.Args')));
     LOG.DEBUG('App.Init');
 
-    Object.keys(process.env).sort().forEach(x => { if (x.startsWith('GITHUB')) { LOG.TRACE(x + ': ' + process.env[x]); } });
+    Object.keys(process.env).sort().forEach(x => { if (1 || x.startsWith('GITHUB')) { LOG.TRACE(x + ': ' + process.env[x]); } });
 
     LOG.DEBUG('App.InitDone');
     await App.Main();
