@@ -64,6 +64,7 @@ App.Main = async function () {
 
     for (let i = 0; i < runs.data.workflow_runs.length; i++) {
         let run = runs.data.workflow_runs[i];
+        LOG.INFO('DeleteRun: ' + run.id);
         try { await octokit.rest.actions.deleteWorkflowRun({ owner: REPO.owner, repo: REPO.repo, run_id: run.id }); } catch (ex) { LOG.ERROR(ex); }
     }
 }
