@@ -59,6 +59,8 @@ App.Main = async function () {
 
     let runs = await octokit.rest.actions.listWorkflowRunsForRepo(REPO);
     console.log(runs);
+    console.log(runs.data.workflow_runs.length);
+    console.log(runs.data.workflow_runs[0]);
 }
 
 //
