@@ -5,7 +5,7 @@ const GITHUB_REPOSITORY = process.env.GITHUB_REPOSITORY;
 const GITHUB_REPOTEAM = GITHUB_REPOSITORY.split('/')[0];
 const GITHUB_REPONAME = GITHUB_REPOSITORY.split('/')[1];
 const REPO = { owner: GITHUB_REPOTEAM, repo: GITHUB_REPONAME };
-
+const ACTIONDO = process.env.ACTIONDO || 'CLEANUP';
 
 //
 
@@ -63,7 +63,7 @@ App.Main = async function () {
     await App.DeletePastRuns();
     //await App.DeletePastRuns(GITHUB_WORKFLOW);
 
-    await App.NukeTags();
+    if (ACTIONDO == 'NUKETAGS') { await App.NukeTags(); }
 }
 
 //
