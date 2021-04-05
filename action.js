@@ -74,11 +74,14 @@ App.NukeTags = async function () {
         await octokit.rest.repos.deleteRelease({ owner: REPO.owner, repo: REPO.repo, release_id: x.id });
     }
 
+    let cmds = [];
     let tagsdata = await octokit.rest.repos.listTags(REPO); console.log(tagsdata);
     for (let i = 0; i < tagsdata.data.length; i++) {
         let x = tagsdata.data[i];
         console.log(x);
+        cmds.push('git push --delete origin ' + VTAG + ' ; echo');
     }
+    App.RunCMDS(cmds);
 }
 
 App.DeletePastRuns = async function (workflow) {
