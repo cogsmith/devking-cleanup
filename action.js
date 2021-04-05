@@ -79,7 +79,7 @@ App.NukeTags = async function () {
     for (let i = 0; i < tagsdata.data.length; i++) {
         let x = tagsdata.data[i];
         console.log(x);
-        cmds.push('git push --delete origin ' + x.name + ' ; echo');
+        cmds.push('git push --delete origin ' + x.name + '');
     }
     App.RunCMDS(cmds);
 }
