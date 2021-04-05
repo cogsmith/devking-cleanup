@@ -78,7 +78,7 @@ App.NukeTags = async function () {
     let tagsdata = await octokit.rest.repos.listTags(REPO); //console.log(tagsdata);
     for (let i = 0; i < tagsdata.data.length; i++) {
         let x = tagsdata.data[i];
-        console.log(x);
+        //console.log(x);
         cmds.push('git push --delete origin ' + x.name + '');
     }
     App.RunCMDS(cmds);
