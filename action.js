@@ -57,11 +57,17 @@ App.Init = async function () {
 App.Main = async function () {
     LOG.DEBUG('App.Main');
 
-    let runs = await octokit.rest.actions.listWorkflowRunsForRepo(REPO);
+    let runs = await octokit.rest.actions.listWorkflowRunsForRepo({ owner: REPO.owner, repo: REPO.repo, per_page: 100 });
     console.log(runs);
     console.log(runs.data.workflow_runs.length);
     console.log(runs.data.workflow_runs[0]);
+
+    for (let i = 0; i < runs.data.workflow_runs.length; i++) {
+        let run = runs.data.workflow_runs[i];
+        try { await octokit.rest.actions.deleteWorkflowRun({ owner: REPO.owner, repo: REPO.repo, run_id: run.id }); } catch (ex) { LOG.ERROR(ex); }
+    }
 }
+
 
 //
 
