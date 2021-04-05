@@ -64,7 +64,7 @@ App.Main = async function () {
 
 //
 
-App.DeletePastRuns = function (workflow) {
+App.DeletePastRuns = async function (workflow) {
     let runs = await octokit.rest.actions.listWorkflowRunsForRepo({ owner: REPO.owner, repo: REPO.repo, per_page: 100 });
     for (let i = 0; i < runs.data.workflow_runs.length; i++) {
         let run = runs.data.workflow_runs[i];
