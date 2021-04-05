@@ -59,7 +59,7 @@ App.Init = async function () {
 
 App.Main = async function () {
     LOG.DEBUG('App.Main');
-    
+
     await App.DeletePastRuns();
     //await App.DeletePastRuns(GITHUB_WORKFLOW);
 
@@ -79,8 +79,10 @@ App.NukeTags = async function () {
     let tagsdata = await octokit.rest.repos.listTags(REPO); //console.log(tagsdata);
     for (let i = 0; i < tagsdata.data.length; i++) {
         let x = tagsdata.data[i];
-        //console.log(x);
-        cmds.push('git push --delete origin ' + x.name + '');
+        //console.log(x);'
+        let cmd = 'git push --delete origin ' + x.name + '';
+        cmds.push(cmd);
+        LOG.TRACE('NukeTag: ' + cmd);
     }
     App.RunCMDS(cmds);
 }
