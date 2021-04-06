@@ -1,8 +1,8 @@
 {
   "name": "devking-cleanup",
   "namelong": "DEVKING-CLEANUP",
-  "description": "GitHub Action: Delete Logs, Runs, Tags, Releases",
-  "version": "0.0.2-dev",
+  "description": "GitHub Action",
+  "version": "0.0.3-dev",
   "dependencies": {
     "@octokit/rest": "^18.5.2",
     "chalk": "^4.1.0",
@@ -12,5 +12,5 @@
     "pino-pretty": "^4.7.1",
     "semver": "^7.3.5"
   },
-  "versiontaglast": "0.0.1"
+  "versiontaglast": "0.0.2"
 }
