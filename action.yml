@@ -1,6 +1,11 @@
-name: "DEVKING_CLEANUP"
+name: 'DEVKING_CLEANUP'
+description: 'Delete Run Logs, Tags, Releases'
+author: 'David Adam Coffey <dac@cogsmith.com>''
+branding:
+  icon: 'delete'  
+  color: 'blue'
 runs:
-  using: "composite"
+  using: 'composite'
   steps:
     - shell: bash      
       run: export ACTIONDO=${{ GITHUB.EVENT.INPUTS.ACTIONDO }} ; export FORCE_COLOR=1 ;  export GITHUB_TOKEN=${{ GITHUB.TOKEN }} ; cd ${{ GITHUB.ACTION_PATH }} ; echo "OS = `uname -a`" ; echo "NPM = `npm ci`" ; cd ${{ GITHUB.WORKSPACE }} ; node ${{ GITHUB.ACTION_PATH }}/app.js --loglevel trace
