@@ -1,5 +1,18 @@
 <code>
 
+# [0.0.6 @ 2021-04-06](https://github.com/cogsmith/devking-cleanup/releases/tag/0.0.6)
+
+## DIFF
+- [1 COMMITS SINCE LAST TAG = 0.0.5](https://github.com/cogsmith/devking-cleanup/compare/0.0.5...0.0.6)
+
+## COMMIT
+- DEV 0.0.6
+
+</code>
+
+---
+<code>
+
 # [0.0.5 @ 2021-04-07](https://github.com/cogsmith/devking-cleanup/releases/tag/0.0.5)
 
 ## DIFF
