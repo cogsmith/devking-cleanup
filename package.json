@@ -2,7 +2,7 @@
   "name": "devking-cleanup",
   "namelong": "DEVKING-CLEANUP",
   "description": "GitHub Action",
-  "version": "0.0.10",
+  "version": "0.1.0-dev",
   "dependencies": {
     "@octokit/rest": "^18.5.2",
     "chalk": "^4.1.0",
