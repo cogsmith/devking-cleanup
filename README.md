@@ -28,5 +28,3 @@
 [![](https://shields.io/github/issues-raw/cogsmith/devking-cleanup)](https://github.com/cogsmith/devking-cleanup/issues)
 
 ---
-
-![SCREENSHOT](SCREENSHOT.PNG)
