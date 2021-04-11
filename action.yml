@@ -1,4 +1,4 @@
-name: 'DEVKING_CLEANUP'
+name: 'DEVKING-CLEANUP'
 description: 'Delete Run Logs, Tags, Releases'
 author: 'David Adam Coffey <dac@cogsmith.com>'
 branding:
