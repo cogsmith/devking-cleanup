@@ -1,4 +1,4 @@
-# 👑 DEVKING-CLEANUP: Runs, Logs, Tags, Releases 👑
+# 👑 Deletes Runs, Logs, Tags, Releases 👑
 ### GitHub Action that will delete Runs, Logs, Tags, Releases
 
 ---
